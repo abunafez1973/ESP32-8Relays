@@ -1,0 +1,492 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="w3.css">
+
+
+    <style>
+        .heading {
+            font-size: 30px;
+            color: #f44336;
+            display: flex;
+            justify-content: center;
+        }
+        .Table-header
+        {
+            padding-right: 10px;
+            padding-right: 10px;
+        }
+    </style>
+
+
+
+<!-- Sidebar -->
+
+<div class="w3-right w3-padding-16">
+    <!--<a class="w3-bar-item w3-button bar-icon-hover w3-right w3-hover-white w3-hide-large w3-hide-medium" href="javascript:void(0)" onclick="w3_open()" title="Menu"><i class='fa'>&#xf0c9;</i></a>
+    -->
+    <!--<a class="w3-bar-item w3-button bar-item-hover w3-right w3-hide-small barex" style="width: 140px; border-radius: 25px; margin-right: 15px;" href="https://shop.w3schools.com/collections/course-catalog" target="_blank" id="cert_navbtn" title="Courses">Paid Courses</a>-->
+    <a class="w3-bar-item w3-button w3-right ws-hide-900 w3-hide-small barex ws-yellow ws-hover-yellow gt-btn-top-spaces" href="login.html"   style="width: 150px;border-radius: 25px; margin-right: 15px;"   title="Logout" onclick="logout()">Logout</a>
+    <a class="w3-bar-item w3-button w3-right ws-hide-1066 w3-hide-small barex ws-pink ws-hover-pink gt-btn-top-cert" style="border-radius: 25px; margin-right: 15px;" href="timer.html"  title="Scheduler Setting">Scheduler Setting</a>
+    <a class="w3-bar-item w3-button w3-right w3-hover-dark-grey ws-hide-900 w3-hide-small ws-hide-1160 barex topnavmain_pro gt-btn-top-pro" style="border-radius: 25px; margin-right: 15px;" href="settings.html" title="Basic Settings">General Settings</a>    
+  </div>
+
+  <div style="font-size:  20px">
+        <label>Current Time:</label>
+        <span id="currentTime"  style="align-items:flex-start"></span>
+        
+  </div>
+</head>
+
+<body onload=display_ct();>
+ 
+
+    <div class="w3-container ">
+        <h4 class="heading">Scheduler Setting</h4>
+        <table class="w3-table-all w3-striped">
+            <tr>
+            <th >Monday</th>
+            <th >Tuesday</th>
+            <th >Wednesday</th>
+            <th >Thursday</th>
+            <th >Friday</th>
+            <th >Saturday</th>
+            </tr>
+
+            <tr>
+                <th>
+                    <label>1#</label>
+                    <input type="checkbox" id="checkboxmontime1" onclick="checkboxClicked(this)">
+                    <input type="time" onchange="timeSelected(this)" disabled id="montime1value">
+                </th>
+                <th>
+                    <label>1#</label>
+                    <input type="checkbox" id="checkboxtuetime1" onclick="checkboxClicked(this)">
+                    <input type="time" onchange="timeSelected(this)" disabled id="tuetime1value">
+                </th>
+                <th>
+                    <label>1#</label>
+                    <input type="checkbox" id="checkboxwedtime2" onclick="checkboxClicked(this)">
+                    <input type="time" onchange="timeSelected(this)" disabled id="wedtime2value">
+                </th>
+                <th>
+                    <label>1#</label>
+                    <input type="checkbox" id="checkboxthutime1" onclick="checkboxClicked(this)">
+                    <input type="time" onchange="timeSelected(this)" disabled id="thutime1value">
+                </th>
+
+                <th>
+                    <label>1#</label>
+                    <input type="checkbox" id="checkboxfritime1" onclick="checkboxClicked(this)">
+                    <input type="time" onchange="timeSelected(this)" disabled id="fritime1value">
+                </th>
+                <th>
+                    <label>1#</label>
+                    <input type="checkbox" id="checkboxsattime1" onclick="checkboxClicked(this)">
+                    <input type="time" onchange="timeSelected(this)" disabled id="sattime1value">
+                </th>
+            </tr>
+            
+            <tr>
+                <th>
+                    <label>2#</label>
+                    <input type="checkbox" id="checkboxmontime2" onclick="checkboxClicked(this)">
+                    <input type="time" onchange="timeSelected(this)" disabled id="montime2value">
+                </th>
+                <th>
+                    <label>2#</label>
+                    <input type="checkbox" id="checkboxtuetime2" onclick="checkboxClicked(this)">
+                    <input type="time" onchange="timeSelected(this)" disabled id="tuetime2value">
+                </th>
+
+                <th>
+                    <label>2#</label>
+                    <input type="checkbox" id="checkboxwedtime2" onclick="checkboxClicked(this)">
+                    <input type="time" onchange="timeSelected(this)" disabled id="wedtime2value">
+                </th>
+                <th>
+                    <label>2#</label>
+                    <input type="checkbox" id="checkboxthutime2" onclick="checkboxClicked(this)">
+                    <input type="time" onchange="timeSelected(this)" disabled id="thutime2value">
+                </th>
+
+                <th>
+                    <label>2#</label>
+                    <input type="checkbox" id="checkboxfritime2" onclick="checkboxClicked(this)">
+                    <input type="time" onchange="timeSelected(this)" disabled id="fritime2value">
+                </th>
+                <th>
+                    <label>2#</label>
+                    <input type="checkbox" id="checkboxsattime2" onclick="checkboxClicked(this)">
+                    <input type="time" onchange="timeSelected(this)" disabled id="sattime2value">
+                </th>
+            </tr>
+  
+
+            
+            <tr>
+                <th>
+                    <label>3#</label>
+                    <input type="checkbox" id="checkboxmontime3" onclick="checkboxClicked(this)">
+                    <input type="time" onchange="timeSelected(this)" disabled id="montime3value">
+                </th>
+                <th>
+                    <label>3#</label>
+                    <input type="checkbox" id="checkboxtuetime3" onclick="checkboxClicked(this)">
+                    <input type="time" onchange="timeSelected(this)" disabled id="tuetime3value">
+                </th>
+                <th>
+                    <label>3#</label>
+                    <input type="checkbox" id="checkboxwedtime3" onclick="checkboxClicked(this)">
+                    <input type="time" onchange="timeSelected(this)" disabled id="wedtime3value">
+                </th>
+                <th>
+                    <label>3#</label>
+                    <input type="checkbox" id="checkboxthutime3" onclick="checkboxClicked(this)">
+                    <input type="time" onchange="timeSelected(this)" disabled id="thutime3value">
+                </th>
+
+                <th>
+                    <label>3#</label>
+                    <input type="checkbox" id="checkboxfritime3" onclick="checkboxClicked(this)">
+                    <input type="time" onchange="timeSelected(this)" disabled id="fritime3value">
+                </th>
+                <th>
+                    <label>3#</label>
+                    <input type="checkbox" id="checkboxsattime3" onclick="checkboxClicked(this)">
+                    <input type="time" onchange="timeSelected(this)" disabled id="sattime3value">
+                </th>
+            </tr>
+
+            <tr>
+                <th>
+                    <label>4#</label>
+                    <input type="checkbox" id="checkboxmontime4" onclick="checkboxClicked(this)">
+                    <input type="time" onchange="timeSelected(this)" disabled id="montime4value">
+                </th>
+                <th>
+                    <label>4#</label>
+                    <input type="checkbox" id="checkboxtuetime4" onclick="checkboxClicked(this)">
+                    <input type="time" onchange="timeSelected(this)" disabled id="tuetime4value">
+                </th>
+                <th>
+                    <label>4#</label>
+                    <input type="checkbox" id="checkboxwedtime5" onclick="checkboxClicked(this)">
+                    <input type="time" onchange="timeSelected(this)" disabled id="wedtime5value">
+                </th>
+                <th>
+                    <label>4#</label>
+                    <input type="checkbox" id="checkboxthutime4" onclick="checkboxClicked(this)">
+                    <input type="time" onchange="timeSelected(this)" disabled id="thutime4value">
+                </th>
+
+                <th>
+                    <label>4#</label>
+                    <input type="checkbox" id="checkboxfritime4" onclick="checkboxClicked(this)">
+                    <input type="time" onchange="timeSelected(this)" disabled id="fritime4value">
+                </th>
+                <th>
+                    <label>4#</label>
+                    <input type="checkbox" id="checkboxsattime4" onclick="checkboxClicked(this)">
+                    <input type="time" onchange="timeSelected(this)" disabled id="sattime4value">
+                </th>
+            </tr>
+            
+            <tr>
+                <th>
+                    <label>5#</label>
+                    <input type="checkbox" id="checkboxmontime5" onclick="checkboxClicked(this)">
+                    <input type="time" onchange="timeSelected(this)" disabled id="montime5value">
+                </th>
+                <th>
+                    <label>5#</label>
+                    <input type="checkbox" id="checkboxtuetime5" onclick="checkboxClicked(this)">
+                    <input type="time" onchange="timeSelected(this)" disabled id="tuetime5value">
+                </th>
+
+                <th>
+                    <label>5#</label>
+                    <input type="checkbox" id="checkboxwedtime5" onclick="checkboxClicked(this)">
+                    <input type="time" onchange="timeSelected(this)" disabled id="wedtime5value">
+                </th>
+                <th>
+                    <label>5#</label>
+                    <input type="checkbox" id="checkboxthutime5" onclick="checkboxClicked(this)">
+                    <input type="time" onchange="timeSelected(this)" disabled id="thutime5value">
+                </th>
+
+                <th>
+                    <label>5#</label>
+                    <input type="checkbox" id="checkboxfritime5" onclick="checkboxClicked(this)">
+                    <input type="time" onchange="timeSelected(this)" disabled id="fritime5value">
+                </th>
+                <th>
+                    <label>5#</label>
+                    <input type="checkbox" id="checkboxsattime5" onclick="checkboxClicked(this)">
+                    <input type="time" onchange="timeSelected(this)" disabled id="sattime5value">
+                </th>
+            </tr>
+  
+
+            
+            <tr>
+                <th>
+                    <label>6#</label>
+                    <input type="checkbox" id="checkboxmontime6" onclick="checkboxClicked(this)">
+                    <input type="time" onchange="timeSelected(this)" disabled id="montime6value">
+                </th>
+                <th>
+                    <label>6#</label>
+                    <input type="checkbox" id="checkboxtuetime6" onclick="checkboxClicked(this)">
+                    <input type="time" onchange="timeSelected(this)" disabled id="tuetime6value">
+                </th>
+                <th>
+                    <label>6#</label>
+                    <input type="checkbox" id="checkboxwedtime6" onclick="checkboxClicked(this)">
+                    <input type="time" onchange="timeSelected(this)" disabled id="wedtime6value">
+                </th>
+                <th>
+                    <label>6#</label>
+                    <input type="checkbox" id="checkboxthutime6" onclick="checkboxClicked(this)">
+                    <input type="time" onchange="timeSelected(this)" disabled id="thutime6value">
+                </th>
+
+                <th>
+                    <label>6#</label>
+                    <input type="checkbox" id="checkboxfritime6" onclick="checkboxClicked(this)">
+                    <input type="time" onchange="timeSelected(this)" disabled id="fritime6value">
+                </th>
+                <th>
+                    <label>6#</label>
+                    <input type="checkbox" id="checkboxsattime6" onclick="checkboxClicked(this)">
+                    <input type="time" onchange="timeSelected(this)" disabled id="sattime6value">
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    <label>7#</label>
+                    <input type="checkbox" id="checkboxmontime7" onclick="checkboxClicked(this)">
+                    <input type="time" onchange="timeSelected(this)" disabled id="montime7value">
+                </th>
+                <th>
+                    <label>7#</label>
+                    <input type="checkbox" id="checkboxtuetime7" onclick="checkboxClicked(this)">
+                    <input type="time" onchange="timeSelected(this)" disabled id="tuetime7value">
+                </th>
+                <th>
+                    <label>7#</label>
+                    <input type="checkbox" id="checkboxwedtime8" onclick="checkboxClicked(this)">
+                    <input type="time" onchange="timeSelected(this)" disabled id="wedtime8value">
+                </th>
+                <th>
+                    <label>7#</label>
+                    <input type="checkbox" id="checkboxthutime7" onclick="checkboxClicked(this)">
+                    <input type="time" onchange="timeSelected(this)" disabled id="thutime7value">
+                </th>
+
+                <th>
+                    <label>7#</label>
+                    <input type="checkbox" id="checkboxfritime7" onclick="checkboxClicked(this)">
+                    <input type="time" onchange="timeSelected(this)" disabled id="fritime7value">
+                </th>
+                <th>
+                    <label>7#</label>
+                    <input type="checkbox" id="checkboxsattime7" onclick="checkboxClicked(this)">
+                    <input type="time" onchange="timeSelected(this)" disabled id="sattime7value">
+                </th>
+            </tr>
+            
+            <tr>
+                <th>
+                    <label>8#</label>
+                    <input type="checkbox" id="checkboxmontime8" onclick="checkboxClicked(this)">
+                    <input type="time" onchange="timeSelected(this)" disabled id="montime8value">
+                </th>
+                <th>
+                    <label>8#</label>
+                    <input type="checkbox" id="checkboxtuetime8" onclick="checkboxClicked(this)">
+                    <input type="time" onchange="timeSelected(this)" disabled id="tuetime8value">
+                </th>
+
+                <th>
+                    <label>8#</label>
+                    <input type="checkbox" id="checkboxwedtime8" onclick="checkboxClicked(this)">
+                    <input type="time" onchange="timeSelected(this)" disabled id="wedtime8value">
+                </th>
+                <th>
+                    <label>8#</label>
+                    <input type="checkbox" id="checkboxthutime8" onclick="checkboxClicked(this)">
+                    <input type="time" onchange="timeSelected(this)" disabled id="thutime8value">
+                </th>
+
+                <th>
+                    <label>8#</label>
+                    <input type="checkbox" id="checkboxfritime8" onclick="checkboxClicked(this)">
+                    <input type="time" onchange="timeSelected(this)" disabled id="fritime8value">
+                </th>
+                <th>
+                    <label>8#</label>
+                    <input type="checkbox" id="checkboxsattime8" onclick="checkboxClicked(this)">
+                    <input type="time" onchange="timeSelected(this)" disabled id="sattime8value">
+                </th>
+            </tr>
+  
+
+            
+            <tr>
+                <th>
+                    <label>9#</label>
+                    <input type="checkbox" id="checkboxmontime9" onclick="checkboxClicked(this)">
+                    <input type="time" onchange="timeSelected(this)" disabled id="montime9value">
+                </th>
+                <th>
+                    <label>9#</label>
+                    <input type="checkbox" id="checkboxtuetime9" onclick="checkboxClicked(this)">
+                    <input type="time" onchange="timeSelected(this)" disabled id="tuetime9value">
+                </th>
+                <th>
+                    <label>9#</label>
+                    <input type="checkbox" id="checkboxwedtime9" onclick="checkboxClicked(this)">
+                    <input type="time" onchange="timeSelected(this)" disabled id="wedtime9value">
+                </th>
+                <th>
+                    <label>9#</label>
+                    <input type="checkbox" id="checkboxthutime9" onclick="checkboxClicked(this)">
+                    <input type="time" onchange="timeSelected(this)" disabled id="thutime9value">
+                </th>
+
+                <th>
+                    <label>9#</label>
+                    <input type="checkbox" id="checkboxfritime9" onclick="checkboxClicked(this)">
+                    <input type="time" onchange="timeSelected(this)" disabled id="fritime9value">
+                </th>
+                <th>
+                    <label>9#</label>
+                    <input type="checkbox" id="checkboxsattime9" onclick="checkboxClicked(this)">
+                    <input type="time" onchange="timeSelected(this)" disabled id="sattime9value">
+                </th>
+            </tr>
+
+            <tr>
+                <th>
+                    <label>10#</label>
+                    <input type="checkbox" id="checkboxmontime10" onclick="checkboxClicked(this)">
+                    <input type="time" onchange="timeSelected(this)" disabled id="montime10value">
+                </th>
+                <th>
+                    <label>10#</label>
+                    <input type="checkbox" id="checkboxtuetime10" onclick="checkboxClicked(this)">
+                    <input type="time" onchange="timeSelected(this)" disabled id="tuetime10value">
+                </th>
+                <th>
+                    <label>10#</label>
+                    <input type="checkbox" id="checkboxwedtime11" onclick="checkboxClicked(this)">
+                    <input type="time" onchange="timeSelected(this)" disabled id="wedtime11value">
+                </th>
+                <th>
+                    <label>10#</label>
+                    <input type="checkbox" id="checkboxthutime10" onclick="checkboxClicked(this)">
+                    <input type="time" onchange="timeSelected(this)" disabled id="thutime10value">
+                </th>
+
+                <th>
+                    <label>10#</label>
+                    <input type="checkbox" id="checkboxfritime10" onclick="checkboxClicked(this)">
+                    <input type="time" onchange="timeSelected(this)" disabled id="fritime10value">
+                </th>
+                <th>
+                    <label>10#</label>
+                    <input type="checkbox" id="checkboxsattime10" onclick="checkboxClicked(this)">
+                    <input type="time" onchange="timeSelected(this)" disabled id="sattime10value">
+                </th>
+            </tr>
+            
+            <tr>
+                <th>
+                    <label>11#</label>
+                    <input type="checkbox" id="checkboxmontime11" onclick="checkboxClicked(this)">
+                    <input type="time" onchange="timeSelected(this)" disabled id="montime11value">
+                </th>
+                <th>
+                    <label>11#</label>
+                    <input type="checkbox" id="checkboxtuetime11" onclick="checkboxClicked(this)">
+                    <input type="time" onchange="timeSelected(this)" disabled id="tuetime11value">
+                </th>
+
+                <th>
+                    <label>11#</label>
+                    <input type="checkbox" id="checkboxwedtime11" onclick="checkboxClicked(this)">
+                    <input type="time" onchange="timeSelected(this)" disabled id="wedtime11value">
+                </th>
+                <th>
+                    <label>11#</label>
+                    <input type="checkbox" id="checkboxthutime11" onclick="checkboxClicked(this)">
+                    <input type="time" onchange="timeSelected(this)" disabled id="thutime11value">
+                </th>
+
+                <th>
+                    <label>11#</label>
+                    <input type="checkbox" id="checkboxfritime11" onclick="checkboxClicked(this)">
+                    <input type="time" onchange="timeSelected(this)" disabled id="fritime11value">
+                </th>
+                <th>
+                    <label>11#</label>
+                    <input type="checkbox" id="checkboxsattime11" onclick="checkboxClicked(this)">
+                    <input type="time" onchange="timeSelected(this)" disabled id="sattime11value">
+                </th>
+            </tr>
+  
+
+            
+            <tr>
+                <th>
+                    <label>12#</label>
+                    <input type="checkbox" id="checkboxmontime12" onclick="checkboxClicked(this)">
+                    <input type="time" onchange="timeSelected(this)" disabled id="montime12value">
+                </th>
+                <th>
+                    <label>12#</label>
+                    <input type="checkbox" id="checkboxtuetime12" onclick="checkboxClicked(this)">
+                    <input type="time" onchange="timeSelected(this)" disabled id="tuetime12value">
+                </th>
+                <th>
+                    <label>12#</label>
+                    <input type="checkbox" id="checkboxwedtime12" onclick="checkboxClicked(this)">
+                    <input type="time" onchange="timeSelected(this)" disabled id="wedtime12value">
+                </th>
+                <th>
+                    <label>12#</label>
+                    <input type="checkbox" id="checkboxthutime12" onclick="checkboxClicked(this)">
+                    <input type="time" onchange="timeSelected(this)" disabled id="thutime12value">
+                </th>
+
+                <th>
+                    <label>12#</label>
+                    <input type="checkbox" id="checkboxfritime12" onclick="checkboxClicked(this)">
+                    <input type="time" onchange="timeSelected(this)" disabled id="fritime12value">
+                </th>
+                <th>
+                    <label>12#</label>
+                    <input type="checkbox" id="checkboxsattime12" onclick="checkboxClicked(this)">
+                    <input type="time" onchange="timeSelected(this)" disabled id="sattime12value">
+                </th>
+            </tr>
+            
+        </table>
+
+        <div class="w3-center" style="margin-top: 10px">
+            <button class="w3-button w3-blue w3-round" onclick="save()">Save</button>
+       </div>
+    </div>
+
+
+   
+    
+    
+    <script src="script.js"></script>
+
+</body>
+
+</html>

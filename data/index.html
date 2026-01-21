@@ -1,0 +1,253 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="w3.css">
+
+  <style>
+    html {
+      font-family: Arial;
+      display: inline-block;
+      text-align: center;
+    }
+
+    h2 {
+      font-size: 3.0rem;
+    }
+
+    p {
+      font-size: 3.0rem;
+    }
+
+    body {
+      max-width: 600px;
+      margin: 0px auto;
+      padding-bottom: 25px;
+    }
+
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 120px;
+      height: 68px
+    }
+
+    .switch input {
+      display: none
+    }
+
+    .slider {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      border-radius: 34px
+    }
+
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 52px;
+      width: 52px;
+      left: 8px;
+      bottom: 8px;
+      background-color: #fff;
+      -webkit-transition: .4s;
+      transition: .4s;
+      border-radius: 68px
+    }
+
+    input:checked+.slider {
+      background-color: #2196F3
+    }
+
+    input:checked+.slider:before {
+      -webkit-transform: translateX(52px);
+      -ms-transform: translateX(52px);
+      transform: translateX(52px)
+    }
+
+    /*############################*/
+
+
+
+
+    /* * {
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+} */
+
+    *:focus {
+      outline: none;
+    }
+
+    /* body {
+  font-family: Arial, Helvetica, sans-serif;
+  /* margin: 0; */
+    /* background-color: #f1f9f9; */
+    /* } */
+
+    */ #app-cover {
+      display: table;
+      width: 600px;
+      margin: 40px auto;
+      counter-reset: button-counter;
+
+    }
+
+    .row {
+      display: table-row;
+    }
+
+    .toggle-button-cover {
+      display: table-cell;
+      position: relative;
+      width: 200px;
+      height: 100px;
+      box-sizing: border-box;
+
+    }
+
+    .button-cover {
+      display: flexbox;
+      height: 90px;
+      margin: 20px;
+      background-color: #fff;
+      box-shadow: 0 10px 20px -8px #c5d6d6;
+      border-radius: 4px;
+    }
+
+    .button-cover:before {
+      counter-increment: button-counter;
+      content: counter(button-counter);
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      color: #d7e3e3;
+      font-size: 12px;
+      line-height: 1;
+      padding: 5px;
+    }
+
+    .button-cover,
+    .knobs,
+    .layer {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+    }
+
+    .button {
+      position: relative;
+      top: 50%;
+      width: 74px;
+      height: 36px;
+      margin: -20px auto 0 auto;
+      overflow: hidden;
+    }
+
+    .button.r,
+    .button.r .layer {
+      border-radius: 100px;
+    }
+
+    .button.b2 {
+      border-radius: 2px;
+    }
+
+    .checkbox {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      padding: 0;
+      margin: 0;
+      opacity: 0;
+      cursor: pointer;
+      z-index: 3;
+    }
+
+    .knobs {
+      z-index: 2;
+    }
+
+    .layer {
+      width: 100%;
+      background-color: #ebf7fc;
+      transition: 0.3s ease all;
+      z-index: 1;
+    }
+
+    /* Button 1 */
+    #button-1 .knobs::before {
+      content: "ON";
+      position: absolute;
+      top: 4px;
+      left: 4px;
+      width: 20px;
+      height: 10px;
+      color: #fff;
+      font-size: 10px;
+      font-weight: bold;
+      text-align: center;
+      line-height: 1;
+      padding: 9px 4px;
+      background-color: #03a9f4;
+      border-radius: 50%;
+      transition: 0.3s cubic-bezier(0.18, 0.89, 0.35, 1.15) all;
+    }
+
+    #button-1 .checkbox:checked+.knobs:before {
+      content: "OFF";
+      left: 42px;
+      background-color: #f44336;
+    }
+
+    #button-1 .checkbox:checked~.layer {
+      background-color: #fcebeb;
+    }
+
+    #button-1 .knobs,
+    #button-1 .knobs:before,
+    #button-1 .layer {
+      transition: 0.3s ease all;
+    }
+
+
+  </style>
+</head>
+
+<body>
+
+
+  
+  <h2>ESP 8 Relays Controller</h2>
+  
+  <h4>Relay #1 GPIO13 </h4><label class="switch"><input type="checkbox" onchange="toggleCheckbox(this)" id="relay1" ><span class="slider"></span></label>
+  <h4>Relay #2 GPIO12 </h4><label class="switch"><input type="checkbox" onchange="toggleCheckbox(this)" id="relay2" ><span class="slider"></span></label>
+  <h4>Relay #3 GPIO14 </h4><label class="switch"><input type="checkbox" onchange="toggleCheckbox(this)" id="relay3" ><span class="slider"></span></label>
+  <h4>Relay #4 GPIO27 </h4><label class="switch"><input type="checkbox" onchange="toggleCheckbox(this)" id="relay4" ><span class="slider"></span></label>
+  <h4>Relay #5 GPIO26 </h4><label class="switch"><input type="checkbox" onchange="toggleCheckbox(this)" id="relay5" ><span class="slider"></span></label>
+  <h4>Relay #6 GPIO25 </h4><label class="switch"><input type="checkbox" onchange="toggleCheckbox(this)" id="relay6" ><span class="slider"></span></label>
+  <h4>Relay #7 GPIO33 </h4><label class="switch"><input type="checkbox" onchange="toggleCheckbox(this)" id="relay7" ><span class="slider"></span></label>
+  <h4>Relay #8 GPIO32 </h4><label class="switch"><input type="checkbox" onchange="toggleCheckbox(this)" id="relay8" ><span class="slider"></span></label>
+  <br>
+  <br>
+  <br>
+  <br>
+  
+    </div> 
+
+
+
+
+
+  <script src="script.js"></script>
+
+</body>
+
+</html>

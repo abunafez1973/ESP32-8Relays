@@ -1,0 +1,396 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="w3.css">
+
+    <style>
+        html {
+            font-family: Arial;
+            display: inline-block;
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 3.0rem;
+        }
+
+        p {
+            font-size: 3.0rem;
+        }
+
+        body {
+            max-width: 600px;
+            margin: 0px auto;
+            padding-bottom: 25px;
+        }
+
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 120px;
+            height: 68px
+        }
+
+        .switch input {
+            display: none
+        }
+
+        .slider {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            border-radius: 34px
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 52px;
+            width: 52px;
+            left: 8px;
+            bottom: 8px;
+            background-color: #fff;
+            -webkit-transition: .4s;
+            transition: .4s;
+            border-radius: 68px
+        }
+
+        input:checked+.slider {
+            background-color: #2196F3
+        }
+
+        input:checked+.slider:before {
+            -webkit-transform: translateX(52px);
+            -ms-transform: translateX(52px);
+            transform: translateX(52px)
+        }
+
+        /*############################*/
+
+
+
+
+        /* * {
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+} */
+
+        *:focus {
+            outline: none;
+        }
+
+        /* body {
+  font-family: Arial, Helvetica, sans-serif;
+  /* margin: 0; */
+        /* background-color: #f1f9f9; */
+        /* } */
+
+        */ #app-cover {
+            display: table;
+            width: 600px;
+            margin: 40px auto;
+            counter-reset: button-counter;
+
+        }
+
+        .row {
+            display: table-row;
+        }
+
+        .toggle-button-cover {
+            display: table-cell;
+            position: relative;
+            width: 200px;
+            height: 100px;
+            box-sizing: border-box;
+
+        }
+
+        .button-cover {
+            display: flexbox;
+            height: 90px;
+            margin: 20px;
+            background-color: #fff;
+            box-shadow: 0 10px 20px -8px #c5d6d6;
+            border-radius: 4px;
+        }
+
+        .button-cover:before {
+            counter-increment: button-counter;
+            content: counter(button-counter);
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            color: #d7e3e3;
+            font-size: 12px;
+            line-height: 1;
+            padding: 5px;
+        }
+
+        .button-cover,
+        .knobs,
+        .layer {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+        }
+
+        .button {
+            position: relative;
+            top: 50%;
+            width: 74px;
+            height: 36px;
+            margin: -20px auto 0 auto;
+            overflow: hidden;
+        }
+
+        .button.r,
+        .button.r .layer {
+            border-radius: 100px;
+        }
+
+        .button.b2 {
+            border-radius: 2px;
+        }
+
+        .checkbox {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+            opacity: 0;
+            cursor: pointer;
+            z-index: 3;
+        }
+
+        .knobs {
+            z-index: 2;
+        }
+
+        .layer {
+            width: 100%;
+            background-color: #ebf7fc;
+            transition: 0.3s ease all;
+            z-index: 1;
+        }
+
+        /* Button 1 */
+        #button-1 .knobs::before {
+            content: "ON";
+            position: absolute;
+            top: 4px;
+            left: 4px;
+            width: 20px;
+            height: 10px;
+            color: #fff;
+            font-size: 10px;
+            font-weight: bold;
+            text-align: center;
+            line-height: 1;
+            padding: 9px 4px;
+            background-color: #03a9f4;
+            border-radius: 50%;
+            transition: 0.3s cubic-bezier(0.18, 0.89, 0.35, 1.15) all;
+        }
+
+        #button-1 .checkbox:checked+.knobs:before {
+            content: "OFF";
+            left: 42px;
+            background-color: #f44336;
+        }
+
+        #button-1 .checkbox:checked~.layer {
+            background-color: #fcebeb;
+        }
+
+        #button-1 .knobs,
+        #button-1 .knobs:before,
+        #button-1 .layer {
+            transition: 0.3s ease all;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="w3-container ">
+        <div id="monday" style="margin-bottom: 20px;">
+            <h4 style="font-size: 30px;color: #f44336;">Monday</h4>
+            <table>
+                <tr>
+                    <th>Time1</th>
+                    <th>Time2</th>
+                    <th>Time3</th>
+                    <th>Time4</th>
+                    <th>Time5</th>
+                </tr>
+                <tr>
+                    <th><input type="checkbox" id="checkboxmontime1" onclick="checkboxClicked(this)"></th>
+                    <th><input type="checkbox" id="checkboxmontime2" onclick="checkboxClicked(this)"></th>
+                    <th><input type="checkbox" id="checkboxmontime3" onclick="checkboxClicked(this)"></th>
+                    <th><input type="checkbox" id="checkboxmontime4" onclick="checkboxClicked(this)"></th>
+                    <th><input type="checkbox" id="checkboxmontime5" onclick="checkboxClicked(this)"></th>
+                </tr>
+                <tr>
+                    <th><input type="time" onchange="timeSelected(this)" disabled id="montime1value"></th>
+                    <th><input type="time" onchange="timeSelected(this)" disabled id="montime2value"></th>
+                    <th><input type="time" onchange="timeSelected(this)" disabled id="montime3value"></th>
+                    <th><input type="time" onchange="timeSelected(this)" disabled id="montime4value"></th>
+                    <th><input type="time" onchange="timeSelected(this)" disabled id="montime5value"></th>
+                </tr>
+            </table>
+        </div>
+
+
+        <div id="Tuesday" style="margin-bottom: 20px;">
+            <h4 style="font-size: 30px;color: #f44336;">Tuesday</h4>
+            <table>
+                <tr>
+                    <th>Time1</th>
+                    <th>Time2</th>
+                    <th>Time3</th>
+                    <th>Time4</th>
+                    <th>Time5</th>
+                </tr>
+                <tr>
+                    <th><input type="checkbox" id="checkboxtuetime1" onclick="checkboxClicked(this)"></th>
+                    <th><input type="checkbox" id="checkboxtuetime2" onclick="checkboxClicked(this)"></th>
+                    <th><input type="checkbox" id="checkboxtuetime3" onclick="checkboxClicked(this)"></th>
+                    <th><input type="checkbox" id="checkboxtuetime4" onclick="checkboxClicked(this)"></th>
+                    <th><input type="checkbox" id="checkboxtuetime5" onclick="checkboxClicked(this)"></th>
+                </tr>
+                <tr>
+                    <th><input type="time" onchange="timeSelected(this)" disabled id="tuetime1value"></th>
+                    <th><input type="time" onchange="timeSelected(this)" disabled id="tuetime2value"></th>
+                    <th><input type="time" onchange="timeSelected(this)" disabled id="tuetime3value"></th>
+                    <th><input type="time" onchange="timeSelected(this)" disabled id="tuetime4value"></th>
+                    <th><input type="time" onchange="timeSelected(this)" disabled id="tuetime5value"></th>
+                </tr>
+            </table>
+        </div>
+
+        <div id="Wednesday" style="margin-bottom: 20px;">
+            <h4 style="font-size: 30px;color: #f44336;">Wednesday</h4>
+            <table>
+                <tr>
+                    <th>Time1</th>
+                    <th>Time2</th>
+                    <th>Time3</th>
+                    <th>Time4</th>
+                    <th>Time5</th>
+                </tr>
+                <tr>
+                    <th><input type="checkbox" id="checkboxwedtime1" onclick="checkboxClicked(this)"></th>
+                    <th><input type="checkbox" id="checkboxwedtime2" onclick="checkboxClicked(this)"></th>
+                    <th><input type="checkbox" id="checkboxwedtime3" onclick="checkboxClicked(this)"></th>
+                    <th><input type="checkbox" id="checkboxwedtime4" onclick="checkboxClicked(this)"></th>
+                    <th><input type="checkbox" id="checkboxwedtime5" onclick="checkboxClicked(this)"></th>
+                </tr>
+                <tr>
+                    <th><input type="time" onchange="timeSelected(this)" disabled id="wedtime1value"></th>
+                    <th><input type="time" onchange="timeSelected(this)" disabled id="wedtime2value"></th>
+                    <th><input type="time" onchange="timeSelected(this)" disabled id="wedtime3value"></th>
+                    <th><input type="time" onchange="timeSelected(this)" disabled id="wedtime4value"></th>
+                    <th><input type="time" onchange="timeSelected(this)" disabled id="wedtime5value"></th>
+                </tr>
+            </table>
+        </div>
+
+
+        <div id="Thursday" style="margin-bottom: 20px;">
+            <h4 style="font-size: 30px;color: #f44336;">Thursday</h4>
+            <table>
+                <tr>
+                    <th>Time1</th>
+                    <th>Time2</th>
+                    <th>Time3</th>
+                    <th>Time4</th>
+                    <th>Time5</th>
+                </tr>
+                <tr>
+                    <th><input type="checkbox" id="checkboxthutime1" onclick="checkboxClicked(this)"></th>
+                    <th><input type="checkbox" id="checkboxthutime2" onclick="checkboxClicked(this)"></th>
+                    <th><input type="checkbox" id="checkboxthutime3" onclick="checkboxClicked(this)"></th>
+                    <th><input type="checkbox" id="checkboxthutime4" onclick="checkboxClicked(this)"></th>
+                    <th><input type="checkbox" id="checkboxthutime5" onclick="checkboxClicked(this)"></th>
+                </tr>
+                <tr>
+                    <th><input type="time" onchange="timeSelected(this)" disabled id="thutime1value"></th>
+                    <th><input type="time" onchange="timeSelected(this)" disabled id="thutime2value"></th>
+                    <th><input type="time" onchange="timeSelected(this)" disabled id="thutime3value"></th>
+                    <th><input type="time" onchange="timeSelected(this)" disabled id="thutime4value"></th>
+                    <th><input type="time" onchange="timeSelected(this)" disabled id="thutime5value"></th>
+                </tr>
+            </table>
+        </div>
+
+
+
+        <div id="Friday" style="margin-bottom: 20px;">
+            <h4 style="font-size: 30px;color: #f44336;">Friday</h4>
+            <table>
+                <tr>
+                    <th>Time1</th>
+                    <th>Time2</th>
+                    <th>Time3</th>
+                    <th>Time4</th>
+                    <th>Time5</th>
+                </tr>
+                <tr>
+                    <th><input type="checkbox" id="checkboxfritime1" onclick="checkboxClicked(this)"></th>
+                    <th><input type="checkbox" id="checkboxfritime2" onclick="checkboxClicked(this)"></th>
+                    <th><input type="checkbox" id="checkboxfritime3" onclick="checkboxClicked(this)"></th>
+                    <th><input type="checkbox" id="checkboxfritime4" onclick="checkboxClicked(this)"></th>
+                    <th><input type="checkbox" id="checkboxfritime5" onclick="checkboxClicked(this)"></th>
+                </tr>
+                <tr>
+                    <th><input type="time" onchange="timeSelected(this)" disabled id="fritime1value"></th>
+                    <th><input type="time" onchange="timeSelected(this)" disabled id="fritime2value"></th>
+                    <th><input type="time" onchange="timeSelected(this)" disabled id="fritime3value"></th>
+                    <th><input type="time" onchange="timeSelected(this)" disabled id="fritime4value"></th>
+                    <th><input type="time" onchange="timeSelected(this)" disabled id="fritime5value"></th>
+                </tr>
+            </table>
+        </div>
+
+
+        <div id="Saturday" style="margin-bottom: 20px;">
+            <h4 style="font-size: 30px;color: #f44336;">Saturday</h4>
+            <table>
+                <tr>
+                    <th>Time1</th>
+                    <th>Time2</th>
+                    <th>Time3</th>
+                    <th>Time4</th>
+                    <th>Time5</th>
+                </tr>
+                <tr>
+                    <th><input type="checkbox" id="checkboxsattime1" onclick="checkboxClicked(this)"></th>
+                    <th><input type="checkbox" id="checkboxsattime2" onclick="checkboxClicked(this)"></th>
+                    <th><input type="checkbox" id="checkboxsattime3" onclick="checkboxClicked(this)"></th>
+                    <th><input type="checkbox" id="checkboxsattime4" onclick="checkboxClicked(this)"></th>
+                    <th><input type="checkbox" id="checkboxsattime5" onclick="checkboxClicked(this)"></th>
+                </tr>
+                <tr>
+                    <th><input type="time" onchange="timeSelected(this)" disabled id="sattime1value"></th>
+                    <th><input type="time" onchange="timeSelected(this)" disabled id="sattime2value"></th>
+                    <th><input type="time" onchange="timeSelected(this)" disabled id="sattime3value"></th>
+                    <th><input type="time" onchange="timeSelected(this)" disabled id="sattime4value"></th>
+                    <th><input type="time" onchange="timeSelected(this)" disabled id="sattime5value"></th>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <script src="script.js"></script>
+
+</body>
+
+</html>
